@@ -1,0 +1,26 @@
+.logo{
+
+    height:80px;
+    width:80px
+}
+#title{
+    display:inline;
+    font-family: 'Alatsi', sans-serif;
+}
+nav{
+    border-radius:5px;
+}
+
+
+.admin-nav-btn{
+    border-radius:20px;
+    
+}
+input[type=text]{
+    border-radius:20px;
+    border-width: 2px;
+    border-color: black;
+}
+body{
+    font-family:  'Josefin Sans', sans-serif; 
+}

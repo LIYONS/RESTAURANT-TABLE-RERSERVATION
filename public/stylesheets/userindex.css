@@ -1,0 +1,112 @@
+body,
+html {
+    height: 100%;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+.indexbg {
+    height: 100%;
+    background-image: url("../images/bg-1.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+p {
+    font-family: cursive;
+    font-size: 18px;
+}
+
+#home-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 80px;
+    margin-top: 20%;
+}
+
+#main-title {
+    font-family:'Yesteryear',cursive;
+    font-size:70px;
+}
+
+#chef-img {
+    display: block;
+    width: 170px;
+    height: 150px;
+}
+#gallery{
+    margin-top:20px;
+}
+.gallery-head{
+    display:inline;
+    font-family: 'Yesteryear', cursive;
+    text-decoration:underline;
+    font-size:60px;
+}
+.g-image{
+    width:80%;
+    height:90%;
+    border-radius:5px;
+    display:block;
+}
+.g-image:hover{
+    transform:scale(1.1);
+    transition: transform .4s;
+}
+.menu-img{
+    height:85%;
+    width:85%;
+}
+#menu-head{
+    font-size:60px;
+    font-family: 'Yesteryear', cursive;
+   
+}
+.menu-btn{
+    border-radius:25px;
+    width:40%;
+    height:40pxx;
+    display:block;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size:20px;
+}
+.menu-btn:hover{
+    transform:scale(1.1);
+    transition: transform .4s;
+}
+.menu-para{
+    font-family:'Yesteryear',cursive;
+    list-style-type:none;
+    
+}
+.menu-li{
+    font-size:30px;
+}
+#footer{
+    border-radius:8px;
+}
+.foot-text{
+    display:block;
+    font-family:'Yesteryear',cursive;
+    font-size:25px; 
+    font-weight:200;
+}
+.foot-head{
+    font-family:'Yesteryear',cursive;
+    font-size:60px;
+    display:block;
+}
+.foot-icon{
+    width:30px;
+    height:30px;
+    display: inline;
+    
+}
+.foot-icon:hover{
+    transform:scale(1.3);
+    transition: transform .4s;
+}
+#fb-icon{
+    padding-left: 45%;
+}

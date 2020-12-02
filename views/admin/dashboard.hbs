@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="stylesheets/admin-dashboard.css">
+<div class="container ">
+    <div class="row">
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+
+      <th scope="col">Name</th>
+      <th scope="col">E-mail</th>
+      <th scope="col">Date</th>
+      <th scope="col">PH.no</th>
+      <th scope="col">Time-start</th>
+      <th scope="col">Time-end</th>
+      <th scope="col">Tables</th>
+       <th scope="col">cancel</th>
+    </tr>
+  </thead>
+  <tbody>
+      {{#each reservations}}
+    <tr>
+      <th scope="row">{{this.name}}</th>
+      <td>{{this.email}}</td>
+      <td>{{this.date}}</td>
+      <td>{{this.phoneno}}</td>
+      <td>{{this.starttime}}</td>
+      <td>{{this.endtime}}</td>  
+      <td>{{this.tables}}</td>
+       <td><button class="btn btn-secondary">Delete</button></td>
+      </tr>
+      {{/each}}
+ 
+  </tbody>
+</table>
+</div>
+</div>

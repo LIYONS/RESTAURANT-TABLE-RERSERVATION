@@ -1,0 +1,174 @@
+<link rel="stylesheet" href="stylesheets/reserve.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+<section class="container bg-light reservation">
+    <div class="row">
+        <div class=" col-12 col-md-6 ">
+            <img src="images/table-layout.png" class=" layout-img pt-5" alt="table-layout">
+            <ul class="pt-4">
+                <li>Please remember that this reservation comes with a cost which you have to pay at the restaurant.</li>
+                <li>Cost of reservation for each table for 1 hour is 50 INR</li>
+                <li>Please appear the restaurant at the specified time</li>
+                <li>We will wait 10 mins after your starttime.If you fail to appear the reservation will be cancelled</li>
+            </ul>
+        </div>
+        <div class="col-md-6 col-12">
+
+            <div class="card">
+
+                <h5 class="card-header bg-dark text-white text-center p-4 rounded">
+                    <strong>RESERVE</strong>
+                </h5>
+                <strong>
+
+                    <div class="card-body ">
+
+
+                        <form class="text-center" style="color: #757575;" method="POST" action="/reserveconfirm">
+
+
+                            <div class="md-form">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" class="form-control pt-2">
+                            </div>
+
+
+
+
+                            <div class="md-form">
+                                <label for="email">E-mail</label>
+                                <input type="email" id="email" name="email" class="form-control pt-2">
+
+                            </div>
+                            <div class="md-form">
+                                <label for="Formphone">Contact:No</label>
+                                <input type="text" id="FormPhone" name="phoneno" class="form-control">
+
+                            </div>
+                            <div class="form-group">
+                                <label for="date">Date</label>
+                                <select class="form-control" name="date" id="name">
+                                    {{#each dates}}
+                                    <option value={{this.day1}}>{{this.day1}}</option>
+                                    <option value={{this.day2}}>{{this.day2}}</option>
+                                    <option value={{this.day3}}>{{this.day3}}</option>
+                                    <option value={{this.day4}}>{{this.day4}}</option>
+                                    <option value={{this.day5}}>{{this.day5}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+
+                            <div class="col">
+                                <div class="form-row">
+                                    <div class="col">
+                                        <div class="md-form">
+                                            <div class="form-group">
+                                                <label for="starttime">Time-Start</label>
+                                                <select name="starttime" class="form-control pt-2" id="starttime">
+                                                    <option value="1100">11:00</option>
+                                                    <option value="1130">11:30</option>
+                                                    <option value="1200">12:00</option>
+                                                    <option value="1230">12:30</option>
+                                                    <option value="1300">01:00</option>
+                                                    <option value="1330">01:30</option>
+                                                    <option value="1400">02:00</option>
+                                                    <option value="1430">02:30</option>
+                                                    <option value="1500">03:00</option>
+                                                    <option value="1530">03:30</option>
+                                                    <option value="1600">04:00</option>
+                                                    <option value="1630">04:30</option>
+                                                    <option value="1700">05:00</option>
+                                                    <option value="1730">05:30</option>
+                                                    <option value="1800">06:00</option>
+                                                    <option value="1830">06:30</option>
+                                                    <option value="1900">07:00</option>
+                                                    <option value="1930">07:30</option>
+                                                    <option value="2000">08:00</option>
+                                                    <option value="2030">08:30</option>
+                                                    <optio  value="2100">09:00</option>
+                                                    <option value="2130">09:30</option>
+                                                    <option value="2200">10:00</option>
+                                                    <option value="2230">10:30</option>
+                                                    
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                       
+                                        <div class="md-form">
+                                            <div class="form-group">
+                                                <label for="endtime">Time-end</label>
+                                                <select name="endtime" class="form-control pt-2" id="endtime">
+                                                    <option value="1130">11:30</option>
+                                                    <option value="1200">12:00</option>
+                                                    <option value="1230">12:30</option>
+                                                    <option value="1300">01:00</option>
+                                                    <option value="1330">01:30</option>
+                                                    <option value="1400">02:00</option>
+                                                    <option value="1430">02:30</option>
+                                                    <option value="1500">03:00</option>
+                                                    <option value="1530">03:30</option>
+                                                    <option value="1600">04:00</option>
+                                                    <option value="1630">04:30</option>
+                                                    <option value="1700">05:00</option>
+                                                    <option value="1730">05:30</option>
+                                                    <option value="1800">06:00</option>
+                                                    <option value="1830">06:30</option>
+                                                    <option value="1900">07:00</option>
+                                                    <option value="1930">07:30</option>
+                                                    <option value="2000">08:00</option>
+                                                    <option value="2030">08:30</option>
+                                                    <optio  value="2100">09:00</option>
+                                                    <option value="2130">09:30</option>
+                                                    <option value="2200">10:00</option>
+                                                    <option value="2230">10:30</option>
+                                                    <option value="2300">11:00</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="tables" id="tables"
+                                        name="table1" value="T1">
+                                    <label class="form-check-label" for="table1">T1</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="table2" name="tables"
+                                        value="T2">
+                                    <label class="form-check-label" for="table2">T2</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="table3" name="tables"
+                                        value="T3">
+                                    <label class="form-check-label" for="table3">T3</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="table4" name="tables"
+                                        value="T4">
+                                    <label class="form-check-label" for="table4">T4</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="table5" name="tables"
+                                        value="T5">
+                                    <label class="form-check-label" for="table5">T5</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="table6" name="tables"
+                                        value="T6">
+                                    <label class="form-check-label" for="table6">T6</label>
+                                </div>
+                                <button class="btn btn-info btn-rounded btn-block my-4 waves-effect z-depth-0"
+                                    type="submit">GO</button>
+
+
+                        </form>
+                    </div>
+                </strong>
+            </div>
+        </div>
+</section>
