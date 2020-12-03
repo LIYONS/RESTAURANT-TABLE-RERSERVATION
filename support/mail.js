@@ -7,15 +7,13 @@ module.exports = {
 
 
 
-    const transporter = nodemailer.createTransport({
-      host: 'smtp.ethereal.email',
-      port: 587,
+    var transporter = nodemailer.createTransport({
+      service: 'gmail',
       auth: {
-        user: 'reva75@ethereal.email',
-        pass: 'VqPgEa34UV9qYmaphQ'
+        user: 'liyonsvarghese2000@gmail.com',
+        pass: '#devasiacruzz@123'
       }
     });
-
 
     var mailOptions = {
       from: 'liyonsvarghese2000@gmail.com',

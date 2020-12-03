@@ -83,6 +83,19 @@ module.exports = {
             }
             else reject(stat)
         })
+    },
+    doLogin:(details)=>{
+        return new promise((resolve,reject)=>{
+            let response={}
+            let admin=db.get().collection('credentials').findOne({$and: [ {username:details.username},{password:details.password}]})
+            if(admin){
+                loginstatus=true
+                response.admin=details
+                response.status=true
+                resolve(response)
+            }
+            else resolve({status:false})
+        })
     }
       
 }

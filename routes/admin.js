@@ -9,10 +9,20 @@ var router = express.Router();
 //  next()
 //  })
 //});
-router.get('/',(req,res)=>{
-  res.render('admin/adminlogin',{admin:true})
+router.get('/', (req, res) => {
+  res.render('admin/adminlogin', { admin: true })
 })
-router.post('/loginverify',(req,res)=>{
-  res.send("hello");
+router.post('/loginverify', (req,res) => {
+  reserveAssist.doLogin(req.body).then((response) => {
+    if (response.status) {
+      reserveAssist.getReservations().then((reservations) => {
+        console.log(reservations)
+        res.render('admin/dashboard', { admin: true, reservations })
+      })
+    }
+    else {
+      res.redirect('/')
+    }
+  })
 })
 module.exports = router;
