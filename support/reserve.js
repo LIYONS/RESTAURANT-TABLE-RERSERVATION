@@ -1,14 +1,45 @@
 
 var db = require('../config/connection')
 var promise = require('promise');
+const { resolve } = require('promise');
 module.exports = {
 
 
     getReservations: () => {
-
         return new promise(async (resolve, reject) => {
-            let reservations = await db.get().collection('reservationdata').find().toArray()
-            resolve(reservations)
+            var d = new Date();
+            d.setDate(new Date().getDate() - 1);
+            d = getFullDate(d)
+
+            function getFullDate(day) {
+                var dd = day.getDate();
+                var mm = day.getMonth();
+                var yyyy = day.getFullYear();
+                var today = dd + '-' + mm + '-' + yyyy;
+                return today;
+            }
+            let reservations = await db.get().collection('reservationdata').find({ date: { $gt: d } }).toArray()
+            if(reservations){
+            for(x in reservations){
+                reservations[x].starttime=reservations[x].starttime[0]+reservations[x].starttime[1]+':'+reservations[x].starttime[2]+reservations[x].starttime[3]
+                reservations[x].endtime=reservations[x].endtime[0]+reservations[x].endtime[1]+':'+reservations[x].endtime[2]+reservations[x].endtime[3]
+            }
+            }
+            console.log(reservations)
+            function compare(a, b) {
+                const d1 = a.date;
+                const d2 = b.date;
+
+                let comparison = 0;
+                if (d1 > d2) {
+                    comparison = 1;
+                } else if (d1 < d2) {
+                    comparison = -1;
+                }
+                return comparison;
+            }
+
+            resolve(reservations.sort(compare));
         })
     },
     getDates: () => {
@@ -50,40 +81,6 @@ module.exports = {
 
         })
     },
-    // isAvailable:(reservation) => {
-
-    //     return new promise(async(resolve,reject)=>{
-    //         let dblist={}
-    //         let stat;
-    //         let temp;
-    //         dblist.temp=await db.get().collection('reservationdata').findOne({$and : [{date:reservation.date},{tables:reservation.tables}]})
-    //         console.log(dblist)
-    //         if(dblist.temp !== null){
-    //                 var a=parseInt(dblist.temp.starttime);
-    //                 var b=parseInt(dblist.temp.endtime);
-    //                 var p=parseInt(reservation.starttime);
-    //                 var q=parseInt(reservation.endtime);
-
-    //             if(p==a) stat=false;
-
-    //             else if(a<p){
-    //                 if(b<p) stat=true
-    //                 else stat=false
-    //             }
-    //             else{
-    //                 if(q<p) stat=true
-    //                 else stat=false
-    //             }             
-    //     }
-    //     else  stat=true;
-    //     if(stat===true) {
-    //        await db.get().collection('reservationdata').insertOne(reservation)
-    //             resolve(reservation)
-
-    //     }
-    //     else reject(stat)
-    // })
-    // },
     doLogin: (details) => {
         return new promise(async (resolve, reject) => {
             let response = {}
@@ -100,10 +97,9 @@ module.exports = {
         return new promise(async (resolve, reject) => {
             let dblist = {}
             var stat = true
-            let response={}
+            let response = {}
 
             dblist = await db.get().collection('reservationdata').find({ $and: [{ date: reservation.date }, { tables: reservation.tables }] }).toArray()
-            console.log(dblist)
             if (dblist[0] !== null) {
                 for (x in dblist) {
 
@@ -118,7 +114,7 @@ module.exports = {
                         else stat = false
                     }
                     else if (a > p) {
-                        if (a>q) stat = true
+                        if (a > q) stat = true
                         else stat = false
                     }
                     else {
@@ -131,15 +127,31 @@ module.exports = {
             }
             else stat = true;
             if (stat === true) {
+                reservation.bookID=reservation.date+reservation.starttime+reservation.endtime+reservation.name;
                 await db.get().collection('reservationdata').insertOne(reservation)
-                response.status=true
-                response.data=reservation
-                console.log(response)
+                response.status = true
+                response.data = reservation
                 resolve(response)
-                
-            }
-            else resolve({status:false})
-    })
 
-}
+            }
+            else resolve({ status: false })
+        })
+
+    },
+    deleteRecord:(detail)=>{
+        let delstatus={}
+        let temp
+        return new promise(async(resolve,reject)=>{
+            temp=await db.get().collection('reservationdata').findOne({bookID: detail.bookID})
+            console.log(temp)
+            if(temp){
+                db.get().collection('reservationdata').deleteOne({bookID: detail.bookID})
+                 delstatus.status=true
+                 resolve(delstatus)
+            }
+            else
+            resolve({status:false})
+        })
+        
+    }
 }

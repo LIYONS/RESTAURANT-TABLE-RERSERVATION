@@ -40,7 +40,6 @@ router.post('/reserveconfirm',(req,res)=>{
     console.log(req.body)
     reserveAssist.isAvailable(req.body).then((response)=>{
         if(response.status){
-            console.log("confirm")
             res.render('user/thanks')
         }
         else res.render('user/collapse')

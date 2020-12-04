@@ -13,8 +13,15 @@ router.post('/loginverify', (req,res) => {
       })
     }
     else {
-      res.redirect('/')
+      res.redirect('/admin')
     }
   })
+})
+router.post('/loginverify/deleterecord',(req,res)=>{
+ reserveAssist.deleteRecord(req.body).then((delstatus)=>{
+   if(delstatus.status){
+     res.redirect('/admin')
+   }
+ })
 })
 module.exports = router;
