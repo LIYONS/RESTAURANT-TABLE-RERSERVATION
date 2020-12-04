@@ -24,17 +24,28 @@ router.get('/reserve', (req, res) => {
     })
 })
 
-router.post('/reserveconfirm', (req, res) => {
+// router.post('/reserveconfirm', (req, res) => {
 
 
-    reserveAssist.isAvailable(req.body)
-    reserveAssist.isAvailable(req.body).then((reservation) => {
-        if (reservation)
+//     reserveAssist.isAvailable(req.body)
+//     reserveAssist.isAvailable(req.body).then((reservation) => {
+//         if (reservation)
+//             res.render('user/thanks')
+//     }).catch((stat) => {
+//         res.render('user/collapse')
+//     })
+
+// })
+router.post('/reserveconfirm',(req,res)=>{
+    console.log(req.body)
+    reserveAssist.isAvailable(req.body).then((response)=>{
+        if(response.status){
+            console.log("confirm")
             res.render('user/thanks')
-    }).catch((stat) => {
-        res.render('user/collapse')
+        }
+        else res.render('user/collapse')
     })
-
+      
 })
 router.post('/contactdone', (req, res) => {
     console.log(req.body)

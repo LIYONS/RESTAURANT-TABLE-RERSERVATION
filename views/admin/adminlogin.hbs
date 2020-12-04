@@ -2,7 +2,7 @@
 </head>
 
 <body>
-    <link rel="stylesheet" href="stylesheets/adminlogin.css">
+    <link rel="stylesheet" href="../stylesheets/adminlogin.css">
     <div class="wrapper fadeInDown">
         <div id="formContent">
             <!-- Tabs Titles -->
@@ -13,9 +13,9 @@
             </div>
 
             <!-- Login Form -->
-            <form action="admin/loginverify" method="POST">
-                <input type="text" id="login" class="fadeIn second" name="login" placeholder="Username">
-                <input type="text" id="password" class="fadeIn third" name="login" placeholder="Password">
+            <form action="/admin/loginverify" method="POST">
+                <input type="text" id="login" class="fadeIn second" name="username" placeholder="Username">
+                <input type="text" id="password" class="fadeIn third" name="password" placeholder="Password">
                 <input type="submit" class="fadeIn fourth" value="Log In">
             </form>
         </div>
