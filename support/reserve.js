@@ -25,7 +25,6 @@ module.exports = {
                 reservations[x].endtime=reservations[x].endtime[0]+reservations[x].endtime[1]+':'+reservations[x].endtime[2]+reservations[x].endtime[3]
             }
             }
-            console.log(reservations)
             function compare(a, b) {
                 const d1 = a.date;
                 const d2 = b.date;
