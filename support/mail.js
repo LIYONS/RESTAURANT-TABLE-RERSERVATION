@@ -10,14 +10,14 @@ module.exports = {
     var transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'liyonsvarghese2000@gmail.com',
-        pass: '#devasiacruzz@123'
+        user: '#',
+        pass: '#'
       }
     });
 
     var mailOptions = {
-      from: 'liyonsvarghese2000@gmail.com',
-      to: 'thebeirutblends360@gmail.com',
+      from: '#',
+      to: '#',
       subject: data.subject,
       text: data.message
     };
