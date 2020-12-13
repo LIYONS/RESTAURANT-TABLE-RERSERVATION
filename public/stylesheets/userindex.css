@@ -8,26 +8,24 @@ html {
 
 .indexbg {
     height: 100%;
-    background-image: url("../images/bg-1.jpg");
+    width:100%;
     background-position: center;
+    display:block;
     background-repeat: no-repeat;
     background-size: cover;
+    border-radius:10px;
 }
 
 p {
-    font-family: cursive;
-    font-size: 18px;
+    font-family: 'Voltaire', sans-serif;
+    font-size: 21px;
 }
 
-#home-title {
-    font-family: 'Pacifico', cursive;
-    font-size: 80px;
-    margin-top: 20%;
-}
+
 
 #main-title {
-    font-family:'Yesteryear',cursive;
-    font-size:70px;
+    font-family: 'Ranchers', cursive;
+    font-size:55px;
 }
 
 #chef-img {
@@ -40,9 +38,8 @@ p {
 }
 .gallery-head{
     display:inline;
-    font-family: 'Yesteryear', cursive;
-    text-decoration:underline;
-    font-size:60px;
+    font-family: 'Ranchers', cursive;
+    font-size:55px;
 }
 .g-image{
     width:80%;
@@ -60,8 +57,7 @@ p {
 }
 #menu-head{
     font-size:60px;
-    font-family: 'Yesteryear', cursive;
-   
+    font-family: 'Ranchers', cursive;
 }
 .menu-btn{
     border-radius:25px;
@@ -76,26 +72,35 @@ p {
     transition: transform .4s;
 }
 .menu-para{
-    font-family:'Yesteryear',cursive;
+    font-family: 'Voltaire', sans-serif;
     list-style-type:none;
     
 }
 .menu-li{
-    font-size:30px;
+    font-size:21px;
+}
+.footersocial{
+    border-radius: 10px;
 }
 #footer{
     border-radius:8px;
 }
 .foot-text{
     display:block;
-    font-family:'Yesteryear',cursive;
-    font-size:25px; 
+    font-family: 'Voltaire', sans-serif;
+    font-size:20px; 
     font-weight:200;
 }
 .foot-head{
-    font-family:'Yesteryear',cursive;
-    font-size:60px;
+    font-family: 'Ranchers', cursive;
+    font-size:40px;
     display:block;
+}
+.foot-mini-head{
+    display:block;
+    font-family: 'Ranchers', cursive;
+    font-size:35px; 
+    
 }
 .foot-icon{
     width:30px;

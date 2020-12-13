@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var reserveAssist = require('../support/reserve')
+var mail=require('../support/mail')
 
 var mail = require("../support/mail")
 
@@ -24,23 +25,11 @@ router.get('/reserve', (req, res) => {
     })
 })
 
-// router.post('/reserveconfirm', (req, res) => {
-
-
-//     reserveAssist.isAvailable(req.body)
-//     reserveAssist.isAvailable(req.body).then((reservation) => {
-//         if (reservation)
-//             res.render('user/thanks')
-//     }).catch((stat) => {
-//         res.render('user/collapse')
-//     })
-
-// })
 router.post('/reserveconfirm',(req,res)=>{
-    console.log(req.body)
     reserveAssist.isAvailable(req.body).then((response)=>{
         if(response.status){
             res.render('user/thanks')
+            mail.reservationMail(response.data)
         }
         else res.render('user/collapse')
     })

@@ -1,18 +1,23 @@
 header{
     border-radius:10px;
+    background-color: black;
+   
 }
 #logo{
 
-    height:80px;
-    width:80px
+    height:60px;
+    width:60px
 }
 #title{
     display:inline;
-    font-family: 'Pacifico', cursive;
+    font-family: 'Ranchers', cursive;
+   
+
+   
 }
 
 .custom-toggler.navbar-toggler { 
-    border-color: white; 
+    border-color: black; 
 }
 .custom-toggler .navbar-toggler-icon { 
     background-image: url( 
@@ -20,7 +25,9 @@ header{
 } 
 
 nav{ 
-     font-family:  'Josefin Sans', sans-serif;    
+   
+    font-family: 'Voltaire', sans-serif;
+    font-weight:800;
 }
 .nav-link{
     padding: 10px 0px;

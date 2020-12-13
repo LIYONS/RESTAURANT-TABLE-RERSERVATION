@@ -1,12 +1,15 @@
 <link rel="stylesheet" href="stylesheets/reserve.css">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
+<script src="javascripts/reserveform.js"></script>
 <section class="container bg-light reservation">
     <div class="row">
         <div class=" col-12 col-md-6 ">
             <img src="images/table-layout.png" class=" layout-img pt-5" alt="table-layout">
             <ul class="pt-4">
-                <li>Please make sure the details you entered is correct.</li>
+                <li>Make sure the details you entered is correct.</li>
                 <li>Please appear at the restaurant at the specified time</li>
             </ul>
         </div>
@@ -22,7 +25,7 @@
                     <div class="card-body ">
 
 
-                        <form class="text-center" style="color: #757575;" method="POST" action="/reserveconfirm">
+                        <form class="text-center reserveform" style="color: #757575;" method="POST" action="/reserveconfirm">
 
 
                             <div class="md-form">
@@ -47,11 +50,7 @@
                                 <label for="date">Date</label>
                                 <select class="form-control" name="date" id="name">
                                     {{#each dates}}
-                                    <option value={{this.day1}}>{{this.day1}}</option>
-                                    <option value={{this.day2}}>{{this.day2}}</option>
-                                    <option value={{this.day3}}>{{this.day3}}</option>
-                                    <option value={{this.day4}}>{{this.day4}}</option>
-                                    <option value={{this.day5}}>{{this.day5}}</option>
+                                    <option value={{this}}>{{this}}</option>
                                     {{/each}}
                                 </select>
                             </div>
@@ -170,3 +169,4 @@
             </div>
         </div>
 </section>
+

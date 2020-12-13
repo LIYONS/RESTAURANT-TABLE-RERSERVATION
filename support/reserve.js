@@ -19,11 +19,11 @@ module.exports = {
                 return today;
             }
             let reservations = await db.get().collection('reservationdata').find({ date: { $gt: d } }).toArray()
-            if(reservations){
-            for(x in reservations){
-                reservations[x].starttime=reservations[x].starttime[0]+reservations[x].starttime[1]+':'+reservations[x].starttime[2]+reservations[x].starttime[3]
-                reservations[x].endtime=reservations[x].endtime[0]+reservations[x].endtime[1]+':'+reservations[x].endtime[2]+reservations[x].endtime[3]
-            }
+            if (reservations) {
+                for (x in reservations) {
+                    reservations[x].starttime = reservations[x].starttime[0] + reservations[x].starttime[1] + ':' + reservations[x].starttime[2] + reservations[x].starttime[3]
+                    reservations[x].endtime = reservations[x].endtime[0] + reservations[x].endtime[1] + ':' + reservations[x].endtime[2] + reservations[x].endtime[3]
+                }
             }
             function compare(a, b) {
                 const d1 = a.date;
@@ -58,15 +58,12 @@ module.exports = {
             var day5 = new Date();
             day5.setDate(new Date().getDate() + 4);
 
-            var dates = { days: {} }
-
-            dates.days.day1 = getFullDate(day1);
-            dates.days.day2 = getFullDate(day2);
-            dates.days.day3 = getFullDate(day3);
-            dates.days.day4 = getFullDate(day4);
-            dates.days.day5 = getFullDate(day5);
-
-
+            var dates = []
+            dates[0] = getFullDate(day1);
+            dates[1] = getFullDate(day2);
+            dates[2] = getFullDate(day3);
+            dates[3] = getFullDate(day4);
+            dates[4] = getFullDate(day5);
 
             function getFullDate(day) {
                 var dd = day.getDate();
@@ -126,7 +123,7 @@ module.exports = {
             }
             else stat = true;
             if (stat === true) {
-                reservation.bookID=reservation.date+reservation.starttime+reservation.endtime+reservation.name;
+                reservation.bookID = reservation.date + reservation.starttime + reservation.endtime + reservation.name;
                 await db.get().collection('reservationdata').insertOne(reservation)
                 response.status = true
                 response.data = reservation
@@ -137,20 +134,20 @@ module.exports = {
         })
 
     },
-    deleteRecord:(detail)=>{
-        let delstatus={}
+    deleteRecord: (detail) => {
+        let delstatus = {}
         let temp
-        return new promise(async(resolve,reject)=>{
-            temp=await db.get().collection('reservationdata').findOne({bookID: detail.bookID})
-            console.log(temp)
-            if(temp){
-                db.get().collection('reservationdata').deleteOne({bookID: detail.bookID})
-                 delstatus.status=true
-                 resolve(delstatus)
+        return new promise(async (resolve, reject) => {
+            temp = await db.get().collection('reservationdata').findOne({ bookID: detail.bookID })
+            if (temp) {
+                db.get().collection('reservationdata').deleteOne({ bookID: detail.bookID })
+                delstatus.status = true
+                delstatus.data = temp;
+                resolve(delstatus)
             }
             else
-            resolve({status:false})
+                resolve({ status: false })
         })
-        
+
     }
 }
