@@ -4,3 +4,23 @@ pw:beirut@360
 contacttb95@gmail.com
 pw:beirut@360
 
+guide...................
+
+db-config
+.........
+
+
+>>show dbs
+
+>>use reservationdb
+
+>>db.createCollection("credentials")
+
+>>db.credentials.insertOne({username:"Admin",password:"admin"})
+
+system
+......
+
+>>npm install
+
+>>npm start

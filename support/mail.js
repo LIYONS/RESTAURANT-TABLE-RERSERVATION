@@ -60,7 +60,7 @@ module.exports = {
       from:'thebeirutblends360@gmail.com',
       to:data.email,
       subject:"Reservation confirmed",
-      html:'<center><h1>CONFIRMED!</h1></center>'+'</h4>Hello'+data.name+'<h5>Your booking ID is</h5><h1>'+data.bookID+'</h1></h4><p>Thank you for booking with us. We would like to let you know that The Beirut blends has received your order, and is preparing it for your need. If you would like to make any changes to it, please visit Your Orders on thebeirutblends.com</p>'
+      html:'<center><h1>CONFIRMED!</h1></center>'+'<h4>Hello, '+data.name+'</h4><h5>Your booking ID is</h5><h2><center>'+data.bookID+'</h2></center><p>Thank you for booking with us. We would like to let you know that The Beirut blends has received your order, and is preparing it for your need. If you would like to make any changes to it, please contact us on <h4>thebeirutblends.com</h4></p>'
     }
     var adminMail={
       from:'contacttb95@gmail.com',
@@ -99,7 +99,7 @@ module.exports = {
       from:'thebeirutblends360@gmail.com',
       to:data.email,
       subject:"Cancellation",
-      html:'<center><h1>RESERVATION CANCELLED!</h1></center><h4>Hi, '+data.name+'</h4><h5>We are sad to hear that you would like to cancel your booking with us. As much as we would like your continued patronage, we respect your decision to cease your agreement.<br>Should you have any questions regarding our services, feel free to check our  website.</h5><h4>Sincerely<br>The Beirut Blends,Thiruvalla</h4>'
+      html:'<center><h1>RESERVATION CANCELLED!</h1></center><h4>Hi, '+data.name+'</h4><p>We are sad to hear that you would like to cancel your booking with us. As much as we would like your continued patronage, we respect your decision to cease your agreement.<br>Should you have any questions regarding our services, feel free to check our  website.</p><h4>Sincerely<br>The Beirut Blends,Thiruvalla</h4>'
     }
     transporter.sendMail(details,(error,info)=>{
       if(error){
