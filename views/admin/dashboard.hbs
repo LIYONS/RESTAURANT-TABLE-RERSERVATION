@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="../../stylesheets/admin-dashboard.css">
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 <div class="container ">
   <a href="/admin/loginverify/logout" class="btn btn-success logout-btn  my-2">Logout</a>
     <div class="row">
@@ -39,12 +40,11 @@
 </table>
 </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 <script>
   $(document).ready(function(){
   $("#adminsearch").on("keyup", function() {
     var value = $(this).val().toLowerCase();
-    $("#revtable").filter(function() {
+    $("#revtable tr").filter(function() {
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
   });

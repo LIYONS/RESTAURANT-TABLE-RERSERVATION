@@ -66,7 +66,7 @@ module.exports = {
       from:'contacttb95@gmail.com',
       to:'thebeirutblends360@gmail.com',
       subject:"New Reservation",
-      html:'<center><h1>NEW RESERVATION</h1></center>'+'<h4>Demo message</h4>'
+      html:'<center><h1>NEW RESERVATION</h1></center>'+'<h5>Booking-ID: '+data.bookID+'</h5><h5>Name of Customer : '+data.name+'</h5><h5>Phone-No : '+data.phoneno+'</h5><h5>Date&Time :'+data.date+','+data.starttime+'-'+data.endtime+'</h5><h5>Tables : '+data.tables+'</h5>'
     }
     transporterA.sendMail(userMail,function (error, info) {
       if (error) {
