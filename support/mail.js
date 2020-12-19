@@ -60,13 +60,13 @@ module.exports = {
       from:'thebeirutblends360@gmail.com',
       to:data.email,
       subject:"Reservation confirmed",
-      html:'<center><h1>CONFIRMED!</h1></center>'+'<h4>Hello, '+data.name+'</h4><h5>Your booking ID is</h5><h2><center>'+data.bookID+'</h2></center><p>Thank you for booking with us. We would like to let you know that The Beirut blends has received your order, and is preparing it for your need. If you would like to make any changes to it, please contact us on <h4>thebeirutblends.com</h4></p>'
+      html:'<center><h1>CONFIRMED!</h1></center>'+'<h4>Hello, '+data.name+'</h4><h5>Your booking ID is</h5><h2><center>'+data._id+'</h2></center><p>Thank you for booking with us. We would like to let you know that The Beirut blends has received your order, and is preparing it for your need. If you would like to make any changes to it, please contact us on <h4>thebeirutblends.com</h4></p>'
     }
     var adminMail={
       from:'contacttb95@gmail.com',
       to:'thebeirutblends360@gmail.com',
       subject:"New Reservation",
-      html:'<center><h1>NEW RESERVATION</h1></center>'+'<h5>Booking-ID: '+data.bookID+'</h5><h5>Name of Customer : '+data.name+'</h5><h5>Phone-No : '+data.phoneno+'</h5><h5>Date&Time :'+data.date+','+data.starttime+'-'+data.endtime+'</h5><h5>Tables : '+data.tables+'</h5>'
+      html:'<center><h1>NEW RESERVATION</h1></center>'+'<h5>Booking-ID: '+data._id+'</h5><h5>Name of Customer : '+data.name+'</h5><h5>Phone-No : '+data.phoneno+'</h5><h5>Date&Time :'+data.date+','+data.starttime+'-'+data.endtime+'</h5><h5>Tables : '+data.tables+'</h5>'
     }
     transporterA.sendMail(userMail,function (error, info) {
       if (error) {

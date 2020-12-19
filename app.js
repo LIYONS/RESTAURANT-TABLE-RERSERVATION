@@ -8,7 +8,6 @@ var session=require('express-session')
 
 var userRouter = require('./routes/user');
 var adminRouter = require('./routes/admin');
-
 var app = express();
 
 var db=require('./config/connection')
@@ -27,7 +26,6 @@ app.use(session({secret:"Beirut",cookie:{maxAge:2400000}}))
 
 db.connect( (err)=>{
   if(err) console.log("Db connection error "+err)
-
   else console.log("db connected successfully to port 27017")
 })
 app.use('/', userRouter);
@@ -48,6 +46,4 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-
 module.exports = app;
