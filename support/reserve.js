@@ -89,6 +89,22 @@ module.exports = {
             else resolve({ status: false })
         })
     },
+    deleteRecord: (detail) => {
+        let delstatus = {}
+        let temp
+        return new promise(async (resolve, reject) => {
+            temp = await db.get().collection('reservationdata').findOne({ bookID: detail.bookID })
+            if (temp) {
+                db.get().collection('reservationdata').deleteOne({ bookID: detail.bookID })
+                delstatus.status = true
+                delstatus.data = temp;
+                resolve(delstatus)
+            }
+            else
+                resolve({ status: false })
+        })
+
+    },
     isAvailable: (reservation) => {
         return new promise(async (resolve, reject) => {
             let dblist = {}
@@ -123,8 +139,8 @@ module.exports = {
             }
             else stat = true;
             if (stat === true) {
+
                 reservation.bookID = reservation.date + reservation.starttime + reservation.endtime + reservation.name;
-                await db.get().collection('reservationdata').insertOne(reservation)
                 response.status = true
                 response.data = reservation
                 resolve(response)
@@ -134,20 +150,5 @@ module.exports = {
         })
 
     },
-    deleteRecord: (detail) => {
-        let delstatus = {}
-        let temp
-        return new promise(async (resolve, reject) => {
-            temp = await db.get().collection('reservationdata').findOne({ bookID: detail.bookID })
-            if (temp) {
-                db.get().collection('reservationdata').deleteOne({ bookID: detail.bookID })
-                delstatus.status = true
-                delstatus.data = temp;
-                resolve(delstatus)
-            }
-            else
-                resolve({ status: false })
-        })
-
-    }
+   
 }

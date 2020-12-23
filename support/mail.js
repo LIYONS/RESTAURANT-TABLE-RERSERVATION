@@ -109,6 +109,29 @@ module.exports = {
         console.log("Cancelmail sent successfully"+info.response)
       }
     })
+  },
+  otpmail:(otp,data)=>{
+    var transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'thebeirutblends360@gmail.com',
+        pass: 'beirut@360'
+      }
+    });
+    var details={
+      from:'thebeirutblends360@gmail.com',
+      to:data.email,
+      subject:"Confirm reservation",
+      html:'<h2>Hi,</h2><center><p>We have recently recieved a request for table reservation from you.Here is the <b>OTP</b>to confirm your reservation<h3>'+otp+'</h3></p></center>'
+    }
+    transporter.sendMail(details,(error,info)=>{
+      if(error){
+        console.log(error)
+      }
+      else{
+        console.log("OTP sent successfully"+info.response)
+      }
+    })
   }
 }
 

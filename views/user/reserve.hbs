@@ -8,6 +8,11 @@
 <section class="container bg-light reservation">
     <div class="row">
         <div class=" col-12 col-md-6 ">
+            {{#if availableStatmsg}}
+            <div class="alert alert-danger mx-3 mt-3" role="alert">
+                <h6>Selected table not available.Select another one!</h6>
+            </div>
+            {{/if}}
             <img src="images/table-layout.png" class=" layout-img pt-5" alt="table-layout">
             <ul class="pt-4">
                 <li>Make sure the details you entered is correct.</li>

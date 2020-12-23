@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({secret:"Beirut",cookie:{maxAge:2400000}}))
+app.use(session({secret:"Beirut",cookie:{maxAge:2400000}, resave: true,saveUninitialized: true}))
 
 db.connect( (err)=>{
   if(err) console.log("Db connection error "+err)

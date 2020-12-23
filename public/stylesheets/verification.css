@@ -1,9 +1,16 @@
-
-/* BASIC */
-
+.formfield{
+    display:block
+}
 html {
     background-color: #56baed;
+    font-family:  'Josefin Sans', sans-serif
   }
+  p{
+    margin-left: auto;
+    margin-right:auto;
+    text-align: center;
+  }
+
   
   body {
     font-family:  'Josefin Sans', sans-serif;
@@ -64,6 +71,7 @@ html {
     border-radius: 0 0 10px 10px;
   }
   
+  
   h2.inactive {
     color: #cccccc;
   }
@@ -73,7 +81,6 @@ html {
     border-bottom: 2px solid #5fbae9;
   }
   
-
   
   input[type=button], input[type=submit], input[type=reset]  {
     background-color: #56baed;
@@ -130,19 +137,7 @@ html {
     border-radius: 5px 5px 5px 5px;
   }
   
-  input[type=text]:focus {
-    background-color: #fff;
-    border-bottom: 2px solid #5fbae9;
-  }
-  
-  input[type=text]:placeholder {
-    color: #cccccc;
-    
-  }
-  input[type=text]{
-      border-radius:15px;
-  }
-  
+
   
   /* ANIMATIONS */
   
@@ -225,8 +220,7 @@ html {
     -moz-animation-delay: 1s;
     animation-delay: 1s;
   }
-  
-  /* Simple CSS3 Fade-in Animation */
+ 
   .underlineHover:after {
     display: block;
     left: 0;
@@ -247,8 +241,6 @@ html {
   }
   
   
-  
-  /* OTHERS */
   
   *:focus {
       outline: none;

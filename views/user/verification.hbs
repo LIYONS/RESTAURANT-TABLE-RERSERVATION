@@ -1,0 +1,29 @@
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="stylesheets/verification.css">
+
+<div class="container text-center">
+      <div class="row">
+        <p class="mt-4">A verification code has been sent to your e-mail.Please check your e-mail and enter the OTP to confirm the reservation</p>
+      </div>
+
+      <div class="wrapper fadeInDown">
+        <div id="formContent" class="bg-light otpform mt-5 ">
+        
+            <div >
+                <h3 class="p-3"><b>VERIFICATION </b></h3>
+            </div>
+            {{#if status}}
+            <div class="alert alert-danger m-2" role="alert">
+              Incorrect OTP!
+            </div>
+            {{/if}}
+         <form action="/verify/verification" method="POST">
+                <input type="password" id="otp" class="formfield m-3" name="otp" placeholder="Enter OTP">
+                <input type="submit" class="formfield m-3" value="Submit">
+            </form>
+            <a class="text-dark m-3" href="/verify/resend"><u>Didn't get otp?Resend..!</u></a>
+          
+        </div>
+    </div>
+    </div>
+

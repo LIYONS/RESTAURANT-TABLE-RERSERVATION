@@ -2,16 +2,18 @@ var express = require('express');
 var support = require('../support/reserve');
 var router = express.Router();
 var mail = require('../support/mail')
-
+let statusformsg=false;
 
 router.get('/', (req, res) => {
-
   let admin = req.session.admin
-  res.render('admin/adminlogin', { admin: true })
+  let status=statusformsg;
+  res.render('admin/adminlogin', { admin: true,status})
+  statusformsg=false;
 })
 router.post('/loginverify', (req, res) => {
  support.doLogin(req.body).then((response) => {
     if (response.status) {
+      statusformsg=false
       req.session.loggedIn = true
       req.session.admin = response.admin
      support.getReservations().then((reservations) => {
@@ -19,6 +21,7 @@ router.post('/loginverify', (req, res) => {
       })
     }
     else {
+      statusformsg=true;
       res.redirect('/admin')
     }
   })
