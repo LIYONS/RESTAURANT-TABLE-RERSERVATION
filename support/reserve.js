@@ -1,6 +1,7 @@
 
 var db = require('../config/connection')
 var promise = require('promise');
+var bcrypt=require('bcrypt')
 const { resolve } = require('promise');
 module.exports = {
 
@@ -80,11 +81,22 @@ module.exports = {
     doLogin: (details) => {
         return new promise(async (resolve, reject) => {
             let response = {}
-            let admin = await db.get().collection('credentials').findOne({ $and: [{ username: details.username }, { password: details.password }] })
+            let admin = await db.get().collection('credentials').findOne({ username: details.username })
             if (admin) {
-                response.admin = details
-                response.status = true
-                resolve(response)
+                bcrypt.compare(details.password,admin.password).then((status)=>{
+                    if(status){
+                    response.admin = details
+                    response.status = true
+                    console.log("Success")
+                    resolve(response)
+                    }
+                    else{
+                    response.status=false
+                    console.log("failed")
+                    resolve(response)
+                    }
+                })
+               
             }
             else resolve({ status: false })
         })

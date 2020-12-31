@@ -16,7 +16,12 @@ db-config
 
 >>db.createCollection("credentials")
 
->>db.credentials.insertOne({username:"Admin",password:"admin"})
+in any route(after installing bcrypt and requiring db)
+
+    var a="Admin"
+    var b="admin"
+    b=await bcrypt.hash(b,10)
+    db.get().collection('credentials').insertOne({username:a,password:b})
 
 system
 ......

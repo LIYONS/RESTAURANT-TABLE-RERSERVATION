@@ -5,19 +5,19 @@ var mail = require('../support/mail')
 let statusformsg=false;
 
 router.get('/', (req, res) => {
-  let admin = req.session.admin
   let status=statusformsg;
   res.render('admin/adminlogin', { admin: true,status})
   statusformsg=false;
+  
 })
 router.post('/loginverify', (req, res) => {
- support.doLogin(req.body).then((response) => {
+    support.doLogin(req.body).then((response) => {
     if (response.status) {
-      statusformsg=false
-      req.session.loggedIn = true
-      req.session.admin = response.admin
-     support.getReservations().then((reservations) => {
-        res.render('admin/dashboard', { admin: true, reservations })
+        statusformsg=false
+        req.session.loggedIn = true
+        req.session.admin = response.admin
+        support.getReservations().then((reservations) => {
+            res.render('admin/dashboard', { admin: true, reservations })
       })
     }
     else {

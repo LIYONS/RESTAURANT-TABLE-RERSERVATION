@@ -1,16 +1,17 @@
 var express = require('express');
 var router = express.Router();
 var otpGenerator = require('otp-generator')
+var bcrypt=require('bcrypt')
+
 var support = require('../support/reserve')
 var mail = require("../support/mail")
 var db = require('../config/connection');
-const reserve = require('../support/reserve');
 var availableStatus=false;
 var tempReservation;
 var tempOtp;
 let verificationStatus=false;
 
-router.get('/', function (req, res, next) {
+router.get('/',async(req, res)=> {
     res.render('user/user', { admin: false });
 });
 router.get('/contact', (req, res) => {
