@@ -5,10 +5,25 @@ var mail = require('../support/mail')
 let statusformsg=false;
 
 router.get('/', (req, res) => {
+  let admin=req.session.admin
+  if(admin){
+    res.redirect('/admin/dashboard')
+  }
+  else{
   let status=statusformsg;
   res.render('admin/adminlogin', { admin: true,status})
   statusformsg=false;
+  }
   
+})
+router.get('/dashboard',(req,res)=>{
+  var admin=req.session.admin
+  if(admin){
+  support.getReservations().then((reservations) => {
+    res.render('admin/dashboard', { admin: true, reservations })
+  
+})
+  }
 })
 router.post('/loginverify', (req, res) => {
     support.doLogin(req.body).then((response) => {
@@ -16,9 +31,7 @@ router.post('/loginverify', (req, res) => {
         statusformsg=false
         req.session.loggedIn = true
         req.session.admin = response.admin
-        support.getReservations().then((reservations) => {
-            res.render('admin/dashboard', { admin: true, reservations })
-      })
+      res.redirect('/admin/dashboard')
     }
     else {
       statusformsg=true;
@@ -26,7 +39,7 @@ router.post('/loginverify', (req, res) => {
     }
   })
 })
-router.post('/loginverify/deleterecord', (req, res) => {
+router.post('/dashboard/deleterecord', (req, res) => {
  support.deleteRecord(req.body).then((delstatus) => {
     if (delstatus.status) {
       res.redirect('/admin')
@@ -34,9 +47,9 @@ router.post('/loginverify/deleterecord', (req, res) => {
     }
   })
 })
-router.get('/loginverify/logout', (req, res) => {
+router.get('/dashboard/logout', (req, res) => {
 
   req.session.destroy()
-  res.redirect('/')
+  res.redirect('/admin')
 })
 module.exports = router;

@@ -5,7 +5,6 @@ var bcrypt=require('bcrypt')
 const { resolve } = require('promise');
 module.exports = {
 
-
     getReservations: () => {
         return new promise(async (resolve, reject) => {
             var d = new Date();
@@ -68,7 +67,7 @@ module.exports = {
 
             function getFullDate(day) {
                 var dd = day.getDate();
-                var mm = day.getMonth();
+                var mm = day.getMonth()+1;
                 var yyyy = day.getFullYear();
                 var today = dd + '-' + mm + '-' + yyyy;
                 return today;
@@ -152,7 +151,7 @@ module.exports = {
             else stat = true;
             if (stat === true) {
 
-                reservation.bookID = reservation.date + reservation.starttime + reservation.endtime + reservation.name;
+                reservation.bookID = Math.random().toString(36).substr(2, 9);
                 response.status = true
                 response.data = reservation
                 resolve(response)

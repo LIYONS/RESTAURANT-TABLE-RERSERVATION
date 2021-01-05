@@ -2,7 +2,7 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
   crossorigin="anonymous"></script>
 <div class="container ">
-  <a href="/admin/loginverify/logout" class="btn btn-success logout-btn  my-2">Logout</a>
+  <a href="/admin/dashboard/logout" class="btn btn-success logout-btn  my-2">Logout</a>
   <div class="row">
     <table class="table">
       <thead class="thead-dark">
@@ -30,7 +30,7 @@
           <td>{{this.endtime}}</td>
           <td>{{this.tables}}</td>
           <td>
-            <form action="/admin/loginverify/deleterecord" method="POST">
+            <form action="/admin/dashboard/deleterecord" method="POST">
               <button class="btn btn-secondary" name="bookID" value="{{this.bookID}}">Delete</button>
             </form>
           </td>
