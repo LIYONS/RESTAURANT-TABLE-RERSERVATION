@@ -46,17 +46,18 @@ module.exports = {
 
 
             var day1 = new Date();
+            day1.setDate(new Date().getDate() + 1);
 
             var day2 = new Date();
-            day2.setDate(new Date().getDate() + 1);
+            day2.setDate(new Date().getDate() + 2);
 
             var day3 = new Date();
-            day3.setDate(new Date().getDate() + 2);
+            day3.setDate(new Date().getDate() + 3);
 
             var day4 = new Date();
-            day4.setDate(new Date().getDate() + 3);
+            day4.setDate(new Date().getDate() + 4);
             var day5 = new Date();
-            day5.setDate(new Date().getDate() + 4);
+            day5.setDate(new Date().getDate() + 5);
 
             var dates = []
             dates[0] = getFullDate(day1);
